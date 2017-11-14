@@ -11,30 +11,32 @@ https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_boo
 
 
 # On Cisco ISE...#
-## Get access to an ISE test environment ##
+
+>- Schedule dcloud http://dcloud.cisco.com if you don't have access to an ISE server to play with.  select, schedule and access “Cisco ISE 2.3 Mobility Sandbox v1”
+
+Cisco Dcloud
+![](/images/dcloud.png)
+
+“Cisco ISE 2.3 Mobility Sandbox v1”
+![](/images/dcloud-ise-sandbox.png)
 
 
-## Log into the ISE PAN ##
-
-- Schedule dcloud http://dcloud.cisco.com if you don't have access to an ISE server to play with.  select, schedule and access “Cisco ISE 2.3 Mobility Sandbox v1”
-
-- Connect to ISE https://_ISE PAN IP Address_/
-
-
+Connect to ISE PAN
+![](/images/ise-pan.png)
 
 ### Enable ERS API within ISE ###
-
-Note: The ERS APIs are disabled by default for security so you must enable it.
-ERS is also disabled after ISE upgrades, so have to re-enable it.
-
 - Navigate to **Administration** > **System** > **Settings** and select ERS Settings from the left panel.
-- Enable the ERS APIs by selecting Enable ERS for Read/Write
-- Select Save to save your changes.
+- Enable the ERS APIs by selecting Enable ERS for Read/Write and Save
+![](/images/ise-enable-ers.png)
+
+>Note: The ERS APIs are disabled by default for security so you must enable it.
+>**ERS is also disabled after ISE upgrades, so have to re-enable it.**
 
 
-### Create ERS API Users ###
+### Create ERS API Admin User ###
+![](/images/ise-ers-admin.png)
+>- You must create separate users (not admin) with the ERS Admin (Read/Write) or ERS Operator (Read-Only) roles to use the ERS APIs.
 
-- You must create separate users (not admin) with the ERS Admin (Read/Write) or ERS Operator (Read-Only) roles to use the ERS APIs.
 - Navigate to Administration > System > Admin Access
 - Choose Administrators > Admin Users from the left pane
 - Choose +Add > Create an Admin User to create a new ers-admin account (and optional ers-operator account).
@@ -53,13 +55,13 @@ ERS is also disabled after ISE upgrades, so have to re-enable it.
 - Navigate to **Work Centers** > **Guest Access** > **Portals & Components**, then from the left menu, select “Sponsor Groups” and ALL_ACCOUNTS
 - Check the “Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)”.
 
-### Open the ERS API SDK Guide ###
-
-https://_ISE PAN IP Address_:9060/ers/sdk
-
 
 # Using Postman... # 
 ## Use REST Client to confirm Sponsor Portal “id” ##
+
+Note: Open the ERS API SDK Guide ###
+
+https://_ISE PAN IP Address_:9060/ers/sdk
 
 GET https://_ISE PAN IP Address_:9060/ers/config/sponsorportal
 
