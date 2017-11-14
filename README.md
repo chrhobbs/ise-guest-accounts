@@ -1,13 +1,16 @@
 # ise-guest-accounts
-Create Guest Accounts on Cisco ISE using REST API.  If you are using an external application (e.g. PassagePoint) to create Guest wireless credentials on Cisco ISE to provide to visitors and want to test that you have correctly configured the API on ISE.
+
+# Objective: #
+Use REST API client to create Guest Accounts on Cisco ISE.  This is to allow external applications (e.g. PassagePoint) to create Guest wireless credentials for visitors.
 
 # Solution #
-Use Postman client to test API connectivity.
+- Use Postman client to test API connectivity with ISE 2.3.
+- With the API, you can create, read, update, delete, and search for guest users.
+- Requires External RESTful Services (ERS) API to be enabled on ISE (https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_book/ise_api_ref_ers1.html)
 
-- Tested with ISE 2.3 sandbox on dcloud.cisco.com
-- Postman client to send REST API requests to ISE
-- Requires External RESTful Services (ERS) API (https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_book/ise_api_ref_ers1.html)
-- Enabling ERS Example (bit old, but was able to use the initial information to enable ERS): https://communities.cisco.com/docs/DOC-66297
+
+ISE ERS Configuration Example: https://communities.cisco.com/docs/DOC-66297
+Cisco ISE Guest API Guide: https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_book/ise_api_ref_guest.html
 
 
 # On Cisco ISE...#
@@ -18,9 +21,6 @@ Use Postman client to test API connectivity.
 >- Note: you can also use the “Cisco ISE 2.3 Mobility Sandbox v1” on dcloud http://dcloud.cisco.com if you don't have access to an ISE server to play with.  
 Cisco Dcloud
 ![](/images/dcloud.png)
-
-![](/images/dcloud-ise-sandbox.png)
-
 
 
 ### Enable ERS API within ISE ###
@@ -90,6 +90,8 @@ curl -X GET \
 - Use POSTMAN with a POST message to create the user account (URL listed below)   
 - Note use of user and Sponsor Portal ID from previous step
 - Please see API documentation in the External RESTful Services (ERS) Online SDK referenced previously. Select “Guest User” for required and optional fields.
+
+![](/images/ise-guest-fields.png)
 
 POST https://_ISE PAN IP Address_:9060/ers/config/guestuser
   
