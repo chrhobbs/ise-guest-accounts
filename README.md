@@ -1,28 +1,27 @@
 # ise-guest-accounts
-Create Guest Accounts on Cisco ISE using REST API (Postman).  If you are using an external application (e.g. PassagePoint) to create Guest wireless credentials on Cisco ISE to provide to visitors and want to test that you have correctly configured the API on ISE.
+Create Guest Accounts on Cisco ISE using REST API.  If you are using an external application (e.g. PassagePoint) to create Guest wireless credentials on Cisco ISE to provide to visitors and want to test that you have correctly configured the API on ISE.
 
-> **Notes**
->- ISE 2.3 sandbox on dcloud.cisco.com
->- Postman client to send REST API requests to ISE
->- Requires External RESTful Services (ERS) API
-https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_book/ise_api_ref_ers1.html
->- Enabling ERS Example (bit old, but was able to use the initial information to enable ERS): https://communities.cisco.com/docs/DOC-66297
->- Check your json formatting with http://json.parser.online.fr/
+# Solution #
+Use Postman client to test API connectivity.
+
+- Tested with ISE 2.3 sandbox on dcloud.cisco.com
+- Postman client to send REST API requests to ISE
+- Requires External RESTful Services (ERS) API (https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_book/ise_api_ref_ers1.html)
+- Enabling ERS Example (bit old, but was able to use the initial information to enable ERS): https://communities.cisco.com/docs/DOC-66297
 
 
 # On Cisco ISE...#
+### Connect to ISE PAN ###
+![](/images/ise-pan.png)
 
->- Schedule dcloud http://dcloud.cisco.com if you don't have access to an ISE server to play with.  select, schedule and access “Cisco ISE 2.3 Mobility Sandbox v1”
 
+>- Note: you can also use the “Cisco ISE 2.3 Mobility Sandbox v1” on dcloud http://dcloud.cisco.com if you don't have access to an ISE server to play with.  
 Cisco Dcloud
 ![](/images/dcloud.png)
 
-“Cisco ISE 2.3 Mobility Sandbox v1”
 ![](/images/dcloud-ise-sandbox.png)
 
 
-Connect to ISE PAN
-![](/images/ise-pan.png)
 
 ### Enable ERS API within ISE ###
 - Navigate to **Administration** > **System** > **Settings** and select ERS Settings from the left panel.
@@ -44,14 +43,14 @@ Connect to ISE PAN
 
 
 ### Create a user account that has rights to create guest accounts ###
-
+![](/images/ise-api-user.png)
 - Navigate to **Administration** > **Identity Management** > **Identities**, then choose Users from the left pane
 - Choose +Add > Create a User to create a new apisponsor account.
 - Note: By default, users in the ALL_ACCOUNTS user identity group are members of the sponsor group and can manage all guest user accounts.
 
 
 #### Allow Guest Accounts to be created through the API ###
-
+![](/images/ise-enable-api.png)
 - Navigate to **Work Centers** > **Guest Access** > **Portals & Components**, then from the left menu, select “Sponsor Groups” and ALL_ACCOUNTS
 - Check the “Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)”.
 
@@ -59,12 +58,10 @@ Connect to ISE PAN
 # Using Postman... # 
 ## Use REST Client to confirm Sponsor Portal “id” ##
 
-Note: Open the ERS API SDK Guide ###
-
-https://_ISE PAN IP Address_:9060/ers/sdk
-
-GET https://_ISE PAN IP Address_:9060/ers/config/sponsorportal
-
+>**Notes:**
+>If you can't find the Portal ID, you can also use the REST API to retrieve it
+>- Open the ERS API SDK Guide https://_ISE PAN IP Address_:9060/ers/sdk
+>- Use the 'GET https://_ISE PAN IP Address_:9060/ers/config/sponsorportal' 
 
 ```
 **HTTP example:**
@@ -188,6 +185,6 @@ curl -X POST \
 ```
 
 # Validate on ISE #
-
+![](/images/ise-guest-validation.png)
 - Go to **Work Centers** > **Guest Access** > **Reports**
 - Select Reports, Guest Access Reports and then Sponsor Login and Audit from the left menu.
