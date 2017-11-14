@@ -10,30 +10,29 @@ https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_boo
 >- Check your json formatting with http://json.parser.online.fr/
 
 
-
-#Get access to an ISE test environment#
-
-- Schedule dcloud http://dcloud.cisco.com if you don't have access to an ISE server to play with 
-- select, schedule and access “Cisco ISE 2.3 Mobility Sandbox v1”
-
-#Log into the ISE PAN#
-https://_ISE PAN IP Address_/
+# On Cisco ISE...#
+## Get access to an ISE test environment ##
 
 
-#Enable ERS API within ISE#
+## Log into the ISE PAN ##
+
+- Schedule dcloud http://dcloud.cisco.com if you don't have access to an ISE server to play with.  select, schedule and access “Cisco ISE 2.3 Mobility Sandbox v1”
+
+- Connect to ISE https://_ISE PAN IP Address_/
+
+
+
+### Enable ERS API within ISE ###
 
 Note: The ERS APIs are disabled by default for security so you must enable it.
 ERS is also disabled after ISE upgrades, so have to re-enable it.
- 
- 
-###Login to your ISE PAN###
 
 - Navigate to **Administration** > **System** > **Settings** and select ERS Settings from the left panel.
 - Enable the ERS APIs by selecting Enable ERS for Read/Write
 - Select Save to save your changes.
 
 
-###Create ERS API Users###
+### Create ERS API Users ###
 
 - You must create separate users (not admin) with the ERS Admin (Read/Write) or ERS Operator (Read-Only) roles to use the ERS APIs.
 - Navigate to Administration > System > Admin Access
@@ -42,24 +41,25 @@ ERS is also disabled after ISE upgrades, so have to re-enable it.
 - This account will be used to collect ERS API information.
 
 
-#Create a user account that has rights to create guest accounts#
+### Create a user account that has rights to create guest accounts ###
 
 - Navigate to **Administration** > **Identity Management** > **Identities**, then choose Users from the left pane
 - Choose +Add > Create a User to create a new apisponsor account.
 - Note: By default, users in the ALL_ACCOUNTS user identity group are members of the sponsor group and can manage all guest user accounts.
 
 
-#Allow Guest Accounts to be created through the API#
+#### Allow Guest Accounts to be created through the API ###
 
 - Navigate to **Work Centers** > **Guest Access** > **Portals & Components**, then from the left menu, select “Sponsor Groups” and ALL_ACCOUNTS
 - Check the “Access Cisco ISE guest accounts using the programmatic interface (Guest REST API)”.
 
-#Open the ERS API SDK Guide#
+### Open the ERS API SDK Guide ###
 
 https://_ISE PAN IP Address_:9060/ers/sdk
 
 
-#Use REST Client to confirm Sponsor Portal “id”#
+# Using Postman... # 
+## Use REST Client to confirm Sponsor Portal “id” ##
 
 GET https://_ISE PAN IP Address_:9060/ers/config/sponsorportal
 
@@ -86,7 +86,7 @@ curl -X GET \
   -H 'postman-token: xxxxxxxx-xxxx-xxxx-xxxx-xxxx'
 ```
 
-<h1>Step 8: Use REST Client to Create a Guest User</h1>
+## Use REST Client to Create a Guest User ##
 
 - Use POSTMAN with a POST message to create the user account (URL listed below)   
 - Note use of user and Sponsor Portal ID from previous step
@@ -185,7 +185,7 @@ curl -X POST \
 }'
 ```
 
-#Validate on ISE#
+# Validate on ISE #
 
 - Go to **Work Centers** > **Guest Access** > **Reports**
 - Select Reports, Guest Access Reports and then Sponsor Login and Audit from the left menu.
