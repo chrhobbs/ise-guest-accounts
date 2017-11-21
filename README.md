@@ -4,7 +4,7 @@
 Use REST API client to create Guest Accounts on Cisco ISE.  This is to allow external applications (e.g. PassagePoint) to create Guest wireless credentials for visitors.
 
 # Solution #
-- Use Postman client to test API connectivity with ISE 2.3.
+- Use Postman client to test API connectivity with ISE 2.3. 
 - With the API, you can create, read, update, delete, and search for guest users.
 - Requires External RESTful Services (ERS) API to be enabled on ISE (https://www.cisco.com/c/en/us/td/docs/security/ise/2-1/api_ref_guide/api_ref_book/ise_api_ref_ers1.html)
 
